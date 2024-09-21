@@ -44,21 +44,32 @@ const highscoreValue = document.getElementById('highscore-value');
 const startButton = document.getElementById('start-button');
 const restartButton = document.getElementById('restart-button');
 
-function drawBoard() {
-    context.fillStyle = '#f5f5f5';
-    context.fillRect(0, 0, canvas.width, canvas.height);
+// Buat objek Image untuk background
+const backgroundImage = new Image();
+backgroundImage.src = '/bg/ground2.jpg'; // Ganti dengan path gambar yang ingin digunakan
 
+function drawBoard() {
+    // Gambar background image ke canvas
+    context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+    // Gambar grid dan balok di atas background
     for (let row = 0; row < ROWS; row++) {
         for (let col = 0; col < COLS; col++) {
             if (board[row][col]) {
                 context.fillStyle = board[row][col];
                 context.fillRect(col * GRID_SIZE, row * GRID_SIZE, GRID_SIZE, GRID_SIZE);
-                context.strokeStyle = '#262626';
+                context.strokeStyle = '#000';
                 context.strokeRect(col * GRID_SIZE, row * GRID_SIZE, GRID_SIZE, GRID_SIZE);
             }
         }
     }
 }
+
+// Pastikan gambar sudah dimuat sebelum digunakan
+backgroundImage.onload = () => {
+    drawBoard(); // Panggil drawBoard setelah gambar dimuat
+};
+
 
 function drawShape(shape, x, y, color) {
     context.fillStyle = color;
@@ -66,7 +77,7 @@ function drawShape(shape, x, y, color) {
         row.forEach((cell, colIndex) => {
             if (cell) {
                 context.fillRect((x + colIndex) * GRID_SIZE, (y + rowIndex) * GRID_SIZE, GRID_SIZE, GRID_SIZE);
-                context.strokeStyle = '#262626';
+                context.strokeStyle = '#000';
                 context.strokeRect((x + colIndex) * GRID_SIZE, (y + rowIndex) * GRID_SIZE, GRID_SIZE, GRID_SIZE);
             }
         });
@@ -149,7 +160,7 @@ function startGame() {
     startScreen.style.display="none"
     gameContainer.classList.remove('hidden');
     resetShape();
-    gameInterval = setInterval(gameLoop, 250); // Set game speed
+    gameInterval = setInterval(gameLoop, 215); // Set game speed
     backgroundMusic.play(); // Start background music
 }
 
