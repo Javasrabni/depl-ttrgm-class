@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murajeal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3df59f6b95.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div style=" position: fixed; width: 100%; height: 100%; display: none; align-items: center; justify-content: center;" id="popupPanduan">
+        
+        <div style="background-color: white; width: 100%; height: fit-content; border-radius: 8px; margin: 32px; z-index: 2; padding: 32px;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button class="left"><i class="fa-solid fa-arrow-left-long"></i></button>
+                    <p style="font-size: 12px;">Untuk menggeser balok ke arah kiri</p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;" >
+                    <button class="right"><i class="fa-solid fa-arrow-right-long"></i></button>
+                    <p style="font-size: 12px;">Untuk menggeser balok ke arah kanan</p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button class="down"><i class="fa-solid fa-arrow-down-long"></i></button>
+                    <p style="font-size: 12px;">Untuk mempercepat jatuhnya balok</p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <button class="rotate">Putar</button>
+                    <p style="font-size: 12px;">Untuk memutar balok</p>
+                </div>
+
+            </div>
+            
+        </div>
+        <div style="background-color: #00000050; width: 100%; height: 100%; position: fixed; z-index: 1;" onclick="hapusPopup()"></div>
+
+    </div>
+
+
+    <div id="start-screen" style=" overflow-y: hidden;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <h1 style="margin-bottom: 12px; font-size: 54px; line-height: 1;">Murajeal</h1>
+            <div style="margin-top: 12px; display: flex; gap: 14px; align-items: center;" >
+            <button id="start-button">Mulai game</button>
+            <!-- <p style="margin-top: 4px; font-size: 12px;">Highscore: <span id="highscore-value">0</span></p> -->
+                <p style="font-size: 12px; color: blue; text-decoration: underline; cursor: pointer;" onclick="showPanduan()">Panduan main</p>
+            </div>
+            <div style=" padding: 0px 32px; margin-top: 80px; ">
+                <p style="font-size: 12px; margin-bottom: 8px;">XII IPS 1 - Informatika</p>
+                <ul style="font-size: 12px; list-style: none;">
+                    <li>Mu'thia Az-Zahra</li>
+                    <li>Ratu Syafitri</li>
+                    <li>Siti Nur Azizah</li>
+                    <li>Aliya Nadira</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div id="game-container" class="hidden">
+        <div id="score" style="margin-bottom: 8px;">
+            Score: <span id="score-value">0</span>
+        </div>
+        <canvas id="tetris" width="300" height="600"></canvas>
+        <div id="controls">
+            <button id="down" ><i class="fa-solid fa-arrow-down-long"></i></button>
+            <button id="left" ><i class="fa-solid fa-arrow-left-long"></i></button>
+            <button id="right" ><i class="fa-solid fa-arrow-right-long"></i></button>
+            <button id="rotate" >Putar</button>
+        </div>
+    </div>
+    <div id="game-over" class="hidden">
+        <h2 style="font-size: 24px; color: tomato; margin-bottom: 32px;">Game Over</h2>
+        <div style="font-size: 12px; margin-bottom: 8px; text-align: center;">Final Score: <span id="final-score">0</span></div>
+        <button id="restart-button">Main lagi</button>
+    </div>
+
+    <div>
+        <audio id="background-music" autoplay>
+            <source src="/babymonster.mp3" >
+        </audio>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
