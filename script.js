@@ -46,7 +46,7 @@ const restartButton = document.getElementById('restart-button');
 
 // Buat objek Image untuk background
 const backgroundImage = new Image();
-backgroundImage.src = '/bg/ground2.jpg'; // Ganti dengan path gambar yang ingin digunakan
+backgroundImage.src = '/bg/bg1.jpg'; // Ganti dengan path gambar yang ingin digunakan
 
 function drawBoard() {
     // Gambar background image ke canvas
@@ -160,7 +160,7 @@ function startGame() {
     startScreen.style.display="none"
     gameContainer.classList.remove('hidden');
     resetShape();
-    gameInterval = setInterval(gameLoop, 215); // Set game speed
+    gameInterval = setInterval(gameLoop, 200); // Set game speed
     backgroundMusic.play(); // Start background music
 }
 
